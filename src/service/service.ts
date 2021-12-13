@@ -434,6 +434,13 @@ export class Discv5 extends (EventEmitter as { new(): Discv5EventEmitter }) {
   }
 
   /**
+   * Hack to get debug logs to work in browser
+   */
+  public enableLogs(): void {
+    debug.enable("discv5*");
+  }
+
+  /**
    * Sends a PING request to a node
    */
   private sendPing(nodeId: NodeId): void {
