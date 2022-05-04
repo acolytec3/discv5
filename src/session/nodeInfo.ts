@@ -62,7 +62,7 @@ export function createNodeContact(input: ENR | Multiaddr): NodeContact {
       type: INodeContactType.Raw,
       publicKey: keypair,
       nodeAddress: {
-        socketAddr: input,
+        socketAddr: input.decapsulate(new Multiaddr('/p2p/' + peerIdStr)),
         nodeId,
       },
     };
