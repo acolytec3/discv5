@@ -510,28 +510,27 @@ export class SessionService extends (EventEmitter as { new (): StrictEventEmitte
       );
 
       // Receiving an AuthResponse must give us an up-to-date view of the node ENR.
-      // Verify the ENR is valid
-   //   if (this.verifyEnr(enr, nodeAddr)) {
-        // Session is valid
-        // Notify the application
+      // Verify the ENR endpoint matches observed node address
+      if (this.verifyEnr(enr, nodeAddr)) {
+        // If ENR is valid, notify application in order to add to routing table
         // The session established here are from WHOAREYOU packets that we sent.
         // This occurs when a node established a connection with us.
         this.emit("established", enr, ConnectionDirection.Incoming);
+      }
 
-        this.newSession(nodeAddr, session);
+      this.newSession(nodeAddr, session);
 
-        // decrypt the message
-        this.handleMessage(src, {
-          maskingIv: packet.maskingIv,
-          header: createHeader(
-            PacketType.Message,
-            encodeMessageAuthdata({ srcId: nodeAddr.nodeId }),
-            packet.header.nonce
-          ),
-          message: packet.message,
-          messageAd: encodeChallengeData(packet.maskingIv, packet.header),
-        });
-     // }
+      // decrypt the message
+      this.handleMessage(src, {
+        maskingIv: packet.maskingIv,
+        header: createHeader(
+          PacketType.Message,
+          encodeMessageAuthdata({ srcId: nodeAddr.nodeId }),
+          packet.header.nonce
+        ),
+        message: packet.message,
+        messageAd: encodeChallengeData(packet.maskingIv, packet.header),
+      });
     } catch (e) {
       if ((e as Error).name === ERR_INVALID_SIG) {
         log("Authentication header contained invalid signature. Ignoring packet from: %o", nodeAddr);
@@ -620,14 +619,14 @@ export class SessionService extends (EventEmitter as { new (): StrictEventEmitte
             // Received the requested ENR
             const enr = message.enrs.pop();
             if (enr) {
-            //  if (this.verifyEnr(enr, nodeAddr)) {
-                // Notify the application
-                // This can occur when we try to dial a node without an
-                // ENR. In this case we have attempted to establish the
-                // connection, so this is an outgoing connection.
-                this.emit("established", enr, ConnectionDirection.Outgoing);
-                return;
-             // }
+              //  if (this.verifyEnr(enr, nodeAddr)) {
+              // Notify the application
+              // This can occur when we try to dial a node without an
+              // ENR. In this case we have attempted to establish the
+              // connection, so this is an outgoing connection.
+              this.emit("established", enr, ConnectionDirection.Outgoing);
+              return;
+              // }
             }
           }
 
