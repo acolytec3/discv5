@@ -44,6 +44,7 @@ jobs:
         with:
           release-type: node
           package-name: release-please-action
+          bump-minor-pre-major: true
           changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}]'
       
       - uses: actions/checkout@v3
@@ -51,12 +52,11 @@ jobs:
         
       - uses: actions/setup-node@v3
         with:
-          cache: 'yarn'
           node-version: 16
           registry-url: 'https://registry.npmjs.org'
         if: ${{ steps.release.outputs.release_created }}
       
-      - run: yarn install --ignore-scripts
+      - run: yarn install
         if: ${{ steps.release.outputs.release_created }}
       
       - run: yarn build
