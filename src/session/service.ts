@@ -516,7 +516,6 @@ export class SessionService extends (EventEmitter as { new (): StrictEventEmitte
         // Notify the application
         // The session established here are from WHOAREYOU packets that we sent.
         // This occurs when a node established a connection with us.
-        console.log('we dont need no stinking enr')
         this.emit("established", enr, ConnectionDirection.Incoming);
 
         this.newSession(nodeAddr, session);
