@@ -45,7 +45,7 @@ export type NodeContact =
       nodeAddress: INodeAddress;
     };
 
-export function createNodeContact(input: ENR | Multiaddr): NodeContact {
+export function createNodeContact(input: ENR | Multiaddr | INodeAddress): NodeContact {
   if (Multiaddr.isMultiaddr(input)) {
     const options = input.toOptions();
     if (options.transport !== "udp") {
@@ -62,16 +62,21 @@ export function createNodeContact(input: ENR | Multiaddr): NodeContact {
       type: INodeContactType.Raw,
       publicKey: keypair,
       nodeAddress: {
-        socketAddr: input.decapsulate(new Multiaddr("/p2p/" + peerIdStr)),
+        socketAddr: input,
         nodeId,
       },
     };
-  } else {
+  } else if (input instanceof ENR) {
     return {
       type: INodeContactType.ENR,
       enr: input,
     };
-  }
+  } else
+    return {
+      type: INodeContactType.Raw,
+      publicKey: {} as IKeypair,
+      nodeAddress: input,
+    };
 }
 
 export function getNodeId(contact: NodeContact): NodeId {

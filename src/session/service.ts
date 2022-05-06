@@ -511,7 +511,15 @@ export class SessionService extends (EventEmitter as { new (): StrictEventEmitte
 
       // Receiving an AuthResponse must give us an up-to-date view of the node ENR.
       // Verify the ENR endpoint matches observed node address
-      if (this.verifyEnr(enr, nodeAddr)) {
+      const verified = this.verifyEnr(enr, nodeAddr);
+
+      // Drop session if session service not configured to allow unverified sessions
+      if (!verified && !this.config.allowUnverifiedSessions) {
+        log("ENR contains invalid socket address. Dropping session with %o", nodeAddr);
+        return;
+      }
+
+      if (verified) {
         // If ENR is valid, notify application in order to add to routing table
         // The session established here are from WHOAREYOU packets that we sent.
         // This occurs when a node established a connection with us.
