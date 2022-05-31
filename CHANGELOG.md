@@ -152,6 +152,47 @@
 
 - Add validations to ENR verification ([f5c53f](https://github.com/ChainSafe/discv5/commit/f5c53f))
 
+## [0.7.0](https://github.com/acolytec3/discv5/compare/v0.8.0...v0.7.0) (2022-05-31)
+
+
+### ⚠ BREAKING CHANGES
+
+* * Transport interface, debug log enabler, enr in talkreq/talkresp
+* new multiaddr used with different API
+* emitted peer event now emits a peer data object with id and multiaddrs instead of a peer-info
+
+### Features
+
+* all unverified inbound sessions ([#180](https://github.com/acolytec3/discv5/issues/180)) ([f2cc802](https://github.com/acolytec3/discv5/commit/f2cc802fd7fb65c5fddfa4d375f9ac58b2af13f9))
+* configurable transport service and remote enr ([#169](https://github.com/acolytec3/discv5/issues/169)) ([72aaa0b](https://github.com/acolytec3/discv5/commit/72aaa0b46967cfa8cea1d4d76bebf96116440934))
+
+
+### Bug Fixes
+
+* A more robust check for rinfo.family  ([#178](https://github.com/acolytec3/discv5/issues/178)) ([7331fbc](https://github.com/acolytec3/discv5/commit/7331fbcb81c998cdebe4e540b64d6a8c9f3c7ef3))
+* add toNewUint8Array when decoding enr values ([65a1828](https://github.com/acolytec3/discv5/commit/65a1828b3ad65255a4f7881ef6ae56630cd1830b))
+* AddrVotes.best ([a3f2769](https://github.com/acolytec3/discv5/commit/a3f2769d2c1bdad430a16a75b99ec02a96484290))
+* decode message and add a test ([d64cee4](https://github.com/acolytec3/discv5/commit/d64cee42001205340c8fa761a03cf12b8071cd86))
+* decodeFindNode ([ac6c707](https://github.com/acolytec3/discv5/commit/ac6c7070c6257d02f62f5a27028787b27ac06bd9))
+* filter multiaddr in nodeAddresstostring ([d533fd8](https://github.com/acolytec3/discv5/commit/d533fd85a7a5b1fcab9eacac82031ee23604385f))
+
+
+### Miscellaneous
+
+* add github actions and remove travis ([f03c9c0](https://github.com/acolytec3/discv5/commit/f03c9c004ec4999333b2fff73700dcd169bf7b30))
+* address review ([2efdecf](https://github.com/acolytec3/discv5/commit/2efdecf68680db3d15af10d4ebadd9a4eae37515))
+* automatic release ([#170](https://github.com/acolytec3/discv5/issues/170)) ([88c1f7c](https://github.com/acolytec3/discv5/commit/88c1f7cc1aca60a3ba4ddbabba5b743d8dbe29a6))
+* Bump peer-id dep to latest ([#174](https://github.com/acolytec3/discv5/issues/174)) ([27bdd26](https://github.com/acolytec3/discv5/commit/27bdd26b371d3d8c8e7e7bc442f53a27db20ba8e))
+* lint and actions ([3702111](https://github.com/acolytec3/discv5/commit/37021116767f23f972c44b4c6ace7512becab46a))
+* **master:** release 0.7.0 ([#171](https://github.com/acolytec3/discv5/issues/171)) ([84428d3](https://github.com/acolytec3/discv5/commit/84428d3a9e34905ace61e9629bcea9d3c34bdff3))
+* **master:** release 0.7.0 ([#172](https://github.com/acolytec3/discv5/issues/172)) ([0488a7b](https://github.com/acolytec3/discv5/commit/0488a7b389672de0b221b63968cc80681150c128))
+* **master:** release 0.7.1 ([#175](https://github.com/acolytec3/discv5/issues/175)) ([c42c684](https://github.com/acolytec3/discv5/commit/c42c684b88623efd6ca262fbddd4ebf8b2eddbd7))
+* **master:** release 0.8.0 ([#181](https://github.com/acolytec3/discv5/issues/181)) ([8f7bd9c](https://github.com/acolytec3/discv5/commit/8f7bd9cdf33aa5a88ec2efb50c4cd4cc5879bc46))
+* release 0.7.0 ([ba942e3](https://github.com/acolytec3/discv5/commit/ba942e351cc00ed622bc3f45f0bc3bd760a94644))
+* update dependencies ([d8d8a0a](https://github.com/acolytec3/discv5/commit/d8d8a0a419b59496fa6b50357d19cc68a4beacc0))
+* use ?? instead of || ([87e13d1](https://github.com/acolytec3/discv5/commit/87e13d1488b2585cc3b092a5a0cc6608b6cf68d8))
+* use new peer-discovery interface ([b04c1c6](https://github.com/acolytec3/discv5/commit/b04c1c6b53471497c7611abfe132fcb63160b612))
+
 ## [0.8.0](https://github.com/ChainSafe/discv5/compare/v0.7.1...v0.8.0) (2022-05-25)
 
 
