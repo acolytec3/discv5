@@ -61,6 +61,8 @@
   },
   "dependencies": {
     "@chainsafe/abort-controller": "^3.0.1",
+    "@noble/hashes": "^1.1.2",
+    "@noble/secp256k1": "^1.6.0",
     "base64url": "^3.0.1",
     "bcrypto": "^5.4.0",
     "bigint-buffer": "^1.1.5",
