@@ -37,6 +37,7 @@
   },
   "types": "./lib/index.d.ts",
   "scripts": {
+    "prepare": "npm run build",
     "check-types": "tsc --noEmit",
     "build": "tsc -p tsconfig.build.json",
     "prepublishOnly": "yarn build",
