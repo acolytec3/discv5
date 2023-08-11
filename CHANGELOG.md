@@ -152,6 +152,99 @@
 
 - Add validations to ENR verification ([f5c53f](https://github.com/ChainSafe/discv5/commit/f5c53f))
 
+## [0.7.0](https://github.com/acolytec3/discv5/compare/v5.0.1...v0.7.0) (2023-08-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* add IPv6 support ([#245](https://github.com/acolytec3/discv5/issues/245))
+* update deps ([#248](https://github.com/acolytec3/discv5/issues/248))
+* refactor ENR ([#241](https://github.com/acolytec3/discv5/issues/241))
+* switch to metrics generator pattern ([#233](https://github.com/acolytec3/discv5/issues/233))
+* convert to esm only ([#184](https://github.com/acolytec3/discv5/issues/184))
+* sendTalkReq and sendTalkResp now require an ENR rather than a NodeId. The findENR method is now exposed to retrieve any locally cached ENRs for this purpose.
+* new multiaddr used with different API
+* emitted peer event now emits a peer data object with id and multiaddrs instead of a peer-info
+
+### Features
+
+* Add `packet` to package.json `exports ([#192](https://github.com/acolytec3/discv5/issues/192)) ([c4e7c33](https://github.com/acolytec3/discv5/commit/c4e7c33f119dfde62a81dfca878195bb5cb2a726))
+* Add IP based rate limiting ([#206](https://github.com/acolytec3/discv5/issues/206)) ([122adbf](https://github.com/acolytec3/discv5/commit/122adbf00734ab03bba7bc47abafafc69ca1ef23))
+* add IPv6 support ([#245](https://github.com/acolytec3/discv5/issues/245)) ([4ccc10f](https://github.com/acolytec3/discv5/commit/4ccc10ffdefe07577b52a2494d713cec348145d8))
+* all unverified inbound sessions ([#180](https://github.com/acolytec3/discv5/issues/180)) ([f2cc802](https://github.com/acolytec3/discv5/commit/f2cc802fd7fb65c5fddfa4d375f9ac58b2af13f9))
+* configurable transport service and remote enr ([#169](https://github.com/acolytec3/discv5/issues/169)) ([72aaa0b](https://github.com/acolytec3/discv5/commit/72aaa0b46967cfa8cea1d4d76bebf96116440934))
+* convert to esm only ([#184](https://github.com/acolytec3/discv5/issues/184)) ([119f1eb](https://github.com/acolytec3/discv5/commit/119f1ebd16701ef216afcf96e11fb402151b7695))
+* drop is-ip by representing IPs internally as octets ([#214](https://github.com/acolytec3/discv5/issues/214)) ([6c43151](https://github.com/acolytec3/discv5/commit/6c431511cf41678e16bb796358f4630edbe457cf))
+* expose find node and ping ([#226](https://github.com/acolytec3/discv5/issues/226)) ([57fdbcc](https://github.com/acolytec3/discv5/commit/57fdbcc81d87ef63c9f13e7cb7886c32f4616188))
+* limit nodes response to 16 packets ([#219](https://github.com/acolytec3/discv5/issues/219)) ([6fdc96d](https://github.com/acolytec3/discv5/commit/6fdc96de9418792e0920a9a5b4b53512e3b61183))
+* refactor ENR ([#241](https://github.com/acolytec3/discv5/issues/241)) ([3ec067d](https://github.com/acolytec3/discv5/commit/3ec067d978b9aa1512d3ca142fb9cfe4c9e89cec))
+* switch to metrics generator pattern ([#233](https://github.com/acolytec3/discv5/issues/233)) ([1751192](https://github.com/acolytec3/discv5/commit/1751192e32ffde419947504d4beb7fd626f808e2))
+* update peer-id dependencies ([#234](https://github.com/acolytec3/discv5/issues/234)) ([7cb42a8](https://github.com/acolytec3/discv5/commit/7cb42a8a63f2d298cab3650b7e89be0993739b8b))
+
+
+### Bug Fixes
+
+* A more robust check for rinfo.family  ([#178](https://github.com/acolytec3/discv5/issues/178)) ([7331fbc](https://github.com/acolytec3/discv5/commit/7331fbcb81c998cdebe4e540b64d6a8c9f3c7ef3))
+* Add lru-cache to deps ([#253](https://github.com/acolytec3/discv5/issues/253)) ([768199e](https://github.com/acolytec3/discv5/commit/768199e712b57980edb0e3290207de2ea6caea1a))
+* add more checks to handleFindNode ([#216](https://github.com/acolytec3/discv5/issues/216)) ([b8a09bf](https://github.com/acolytec3/discv5/commit/b8a09bf5e23ca66a9cfb496520a3955684be6be4))
+* add toNewUint8Array when decoding enr values ([65a1828](https://github.com/acolytec3/discv5/commit/65a1828b3ad65255a4f7881ef6ae56630cd1830b))
+* AddrVotes.best ([a3f2769](https://github.com/acolytec3/discv5/commit/a3f2769d2c1bdad430a16a75b99ec02a96484290))
+* decode message and add a test ([d64cee4](https://github.com/acolytec3/discv5/commit/d64cee42001205340c8fa761a03cf12b8071cd86))
+* decodeFindNode ([ac6c707](https://github.com/acolytec3/discv5/commit/ac6c7070c6257d02f62f5a27028787b27ac06bd9))
+* delete signature on enr.delete ([#238](https://github.com/acolytec3/discv5/issues/238)) ([3c30fc8](https://github.com/acolytec3/discv5/commit/3c30fc83b293869f0f350ac6bc5b471a084d9566))
+* ensure our enr has signature in INodesMessage response ([#229](https://github.com/acolytec3/discv5/issues/229)) ([71a917f](https://github.com/acolytec3/discv5/commit/71a917f2d505d93c1c24044c820810cc9349ea1f))
+* miscellaneous typos ([#215](https://github.com/acolytec3/discv5/issues/215)) ([0a1c2b4](https://github.com/acolytec3/discv5/commit/0a1c2b443520392dad15eea698b7481a3f5fd0c4))
+* Remove p2p portions of multiaddr in `nodeAddressToString` ([#182](https://github.com/acolytec3/discv5/issues/182)) ([72cd0f5](https://github.com/acolytec3/discv5/commit/72cd0f5372f2a49599783b495e43fec8fe0e6ade))
+* revert limit to nodes response ([#222](https://github.com/acolytec3/discv5/issues/222)) ([a628308](https://github.com/acolytec3/discv5/commit/a6283082e069c0afac0e06cd7eb26e6b17ee5310))
+* throw error when encoding/decoding PONG with invalid port ([#218](https://github.com/acolytec3/discv5/issues/218)) ([cfc3c3c](https://github.com/acolytec3/discv5/commit/cfc3c3cdae7a4672c8bb4b3990fd7963fea04c13))
+* use ^ with @libp2p/interfaces dep ([#195](https://github.com/acolytec3/discv5/issues/195)) ([67338bb](https://github.com/acolytec3/discv5/commit/67338bb833f723e30bdcc24fe4c6ab2f70949c10))
+
+
+### Miscellaneous
+
+* add github actions and remove travis ([f03c9c0](https://github.com/acolytec3/discv5/commit/f03c9c004ec4999333b2fff73700dcd169bf7b30))
+* address review ([2efdecf](https://github.com/acolytec3/discv5/commit/2efdecf68680db3d15af10d4ebadd9a4eae37515))
+* automatic release ([#170](https://github.com/acolytec3/discv5/issues/170)) ([88c1f7c](https://github.com/acolytec3/discv5/commit/88c1f7cc1aca60a3ba4ddbabba5b743d8dbe29a6))
+* bump multiaddr dependency to ^11.0.0 ([#203](https://github.com/acolytec3/discv5/issues/203)) ([62fe0e2](https://github.com/acolytec3/discv5/commit/62fe0e2b34b10971189869e77de785e6c8193e10))
+* Bump peer-id dep to latest ([#174](https://github.com/acolytec3/discv5/issues/174)) ([27bdd26](https://github.com/acolytec3/discv5/commit/27bdd26b371d3d8c8e7e7bc442f53a27db20ba8e))
+* Commit package-lock for deterministic CI ([#208](https://github.com/acolytec3/discv5/issues/208)) ([2c90b5e](https://github.com/acolytec3/discv5/commit/2c90b5e3a9146d98489597eef0e71280269aef92))
+* disable validateSingleCommit ([#213](https://github.com/acolytec3/discv5/issues/213)) ([43a87ca](https://github.com/acolytec3/discv5/commit/43a87ca01616d08c3549b630c7cd9e0a5f3f8a21))
+* lint and actions ([3702111](https://github.com/acolytec3/discv5/commit/37021116767f23f972c44b4c6ace7512becab46a))
+* **master:** release 0.7.0 ([#171](https://github.com/acolytec3/discv5/issues/171)) ([84428d3](https://github.com/acolytec3/discv5/commit/84428d3a9e34905ace61e9629bcea9d3c34bdff3))
+* **master:** release 0.7.0 ([#172](https://github.com/acolytec3/discv5/issues/172)) ([0488a7b](https://github.com/acolytec3/discv5/commit/0488a7b389672de0b221b63968cc80681150c128))
+* **master:** release 0.7.1 ([#175](https://github.com/acolytec3/discv5/issues/175)) ([c42c684](https://github.com/acolytec3/discv5/commit/c42c684b88623efd6ca262fbddd4ebf8b2eddbd7))
+* **master:** release 0.8.0 ([#181](https://github.com/acolytec3/discv5/issues/181)) ([8f7bd9c](https://github.com/acolytec3/discv5/commit/8f7bd9cdf33aa5a88ec2efb50c4cd4cc5879bc46))
+* **master:** release 0.8.1 ([#183](https://github.com/acolytec3/discv5/issues/183)) ([471cbfa](https://github.com/acolytec3/discv5/commit/471cbfa0e7a4821b817608e8a2d36e473d93d73d))
+* **master:** release 1.0.0 ([#186](https://github.com/acolytec3/discv5/issues/186)) ([17b11bb](https://github.com/acolytec3/discv5/commit/17b11bb5202e67a777c1326f4d269351a1c74f82))
+* **master:** release 1.0.1 ([#189](https://github.com/acolytec3/discv5/issues/189)) ([33b7ac4](https://github.com/acolytec3/discv5/commit/33b7ac40accab98f03ea910d7c5f675e37ef3f6b))
+* **master:** release 1.0.2 ([#191](https://github.com/acolytec3/discv5/issues/191)) ([0267833](https://github.com/acolytec3/discv5/commit/0267833f250edde61469c2f0f46c3dbca7f25ece))
+* **master:** release 1.1.0 ([#193](https://github.com/acolytec3/discv5/issues/193)) ([8d17624](https://github.com/acolytec3/discv5/commit/8d17624fb974f13501206579c2ac5c17f971b0c6))
+* **master:** release 1.1.1 ([#196](https://github.com/acolytec3/discv5/issues/196)) ([7b651f6](https://github.com/acolytec3/discv5/commit/7b651f67d71682ac0ec258e826b1c82a45426f0e))
+* **master:** release 1.1.2 ([#204](https://github.com/acolytec3/discv5/issues/204)) ([1eabe2c](https://github.com/acolytec3/discv5/commit/1eabe2c963c4f417fc063be75d1e1a679137d412))
+* **master:** release 1.2.0 ([#210](https://github.com/acolytec3/discv5/issues/210)) ([ffb2daf](https://github.com/acolytec3/discv5/commit/ffb2daf295ace410a7438a581e61c121c193693c))
+* **master:** release 1.2.1 ([#217](https://github.com/acolytec3/discv5/issues/217)) ([3d037e4](https://github.com/acolytec3/discv5/commit/3d037e40369dcd8efe8be1c2dc409c1e6ad3f37d))
+* **master:** release 1.3.0 ([#220](https://github.com/acolytec3/discv5/issues/220)) ([afe1b5c](https://github.com/acolytec3/discv5/commit/afe1b5c11e5b6f68c6aebc6b6587476d23ba07c7))
+* **master:** release 1.3.1 ([#223](https://github.com/acolytec3/discv5/issues/223)) ([34092cd](https://github.com/acolytec3/discv5/commit/34092cdfdd23337a7aebbaf6953a195073b39e0f))
+* **master:** release 1.4.0 ([#224](https://github.com/acolytec3/discv5/issues/224)) ([6eecf2a](https://github.com/acolytec3/discv5/commit/6eecf2a8dde68502523b1037bc05dfa519401bbd))
+* **master:** release 1.5.0 ([#227](https://github.com/acolytec3/discv5/issues/227)) ([0be0571](https://github.com/acolytec3/discv5/commit/0be0571e2467c8dd271bcff0b7ed796417d09b88))
+* **master:** release 2.0.0 ([#230](https://github.com/acolytec3/discv5/issues/230)) ([ec964fc](https://github.com/acolytec3/discv5/commit/ec964fc30a3a746f4964c8980d24d2d03d8f1396))
+* **master:** release 2.1.0 ([#235](https://github.com/acolytec3/discv5/issues/235)) ([390b4f8](https://github.com/acolytec3/discv5/commit/390b4f892381521f002732ea53fcf5c7c76bc6e1))
+* **master:** release 2.1.1 ([#239](https://github.com/acolytec3/discv5/issues/239)) ([d415d90](https://github.com/acolytec3/discv5/commit/d415d9012cfa1f928dd50dd983c419ab5c9402bb))
+* **master:** release 3.0.0 ([#242](https://github.com/acolytec3/discv5/issues/242)) ([13782fe](https://github.com/acolytec3/discv5/commit/13782fe96777c5ad68665d7d9e7f60103683702e))
+* **master:** release 4.0.0 ([#249](https://github.com/acolytec3/discv5/issues/249)) ([eca1613](https://github.com/acolytec3/discv5/commit/eca161338ca30b8c8e9a7b96dc1394baad487b5b))
+* **master:** release 5.0.0 ([#251](https://github.com/acolytec3/discv5/issues/251)) ([75304d5](https://github.com/acolytec3/discv5/commit/75304d5a067f0ec2af839a280265b3d489bd4829))
+* **master:** release 5.0.1 ([#254](https://github.com/acolytec3/discv5/issues/254)) ([7580198](https://github.com/acolytec3/discv5/commit/75801983a3f3f0507f0560b664b95b775548977e))
+* migrate to is-ip 4.0.0 ([#211](https://github.com/acolytec3/discv5/issues/211)) ([e2cf4ac](https://github.com/acolytec3/discv5/commit/e2cf4ac475c42c93fd7020715b16fc5b1fcc854c))
+* release 0.7.0 ([ba942e3](https://github.com/acolytec3/discv5/commit/ba942e351cc00ed622bc3f45f0bc3bd760a94644))
+* remove breaking change introduced in [#206](https://github.com/acolytec3/discv5/issues/206) ([#212](https://github.com/acolytec3/discv5/issues/212)) ([7a95ca6](https://github.com/acolytec3/discv5/commit/7a95ca6c500188c779cb05af77040ac42fc66490))
+* update dependencies ([d8d8a0a](https://github.com/acolytec3/discv5/commit/d8d8a0a419b59496fa6b50357d19cc68a4beacc0))
+* update deps ([#248](https://github.com/acolytec3/discv5/issues/248)) ([542ef33](https://github.com/acolytec3/discv5/commit/542ef334be77b88f989fc09e02ddaaf3fc2fc0d8))
+* update libp2p dependencies ([#188](https://github.com/acolytec3/discv5/issues/188)) ([8d79b87](https://github.com/acolytec3/discv5/commit/8d79b873b4bd55a0c46251d64a5a12cb177f9bff))
+* update libp2p dependencies ([#190](https://github.com/acolytec3/discv5/issues/190)) ([08f0aca](https://github.com/acolytec3/discv5/commit/08f0aca77cac8a860633b30c2f86c64bd24bc75a))
+* update release ci for 1.0 ([#187](https://github.com/acolytec3/discv5/issues/187)) ([c9ac749](https://github.com/acolytec3/discv5/commit/c9ac7499bed96a2ab3aa6e48c62ab7b4f0c628c1))
+* use ?? instead of || ([87e13d1](https://github.com/acolytec3/discv5/commit/87e13d1488b2585cc3b092a5a0cc6608b6cf68d8))
+* use new peer-discovery interface ([b04c1c6](https://github.com/acolytec3/discv5/commit/b04c1c6b53471497c7611abfe132fcb63160b612))
+
 ## [5.0.1](https://github.com/ChainSafe/discv5/compare/v5.0.0...v5.0.1) (2023-08-10)
 
 
